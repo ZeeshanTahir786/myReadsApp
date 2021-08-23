@@ -1,31 +1,22 @@
-import React, { Component } from "react";
-
-class SearchBooksInput extends Component {
-  state = {
-    value: "",
-  };
-  handleChange = (event) => {
+import React, { useState } from "react";
+const SearchBooksInput = ({ onSearch }) => {
+  const [value, setValue] = useState("");
+  const handleChange = (event) => {
     const val = event.target.value;
-    this.setState({ value: val }, () => {
-      // console.log(val);
-      // if (val.length >= 1) {
-      this.props.onSearch(val);
-      // }
-    });
+    setValue(val);
+    onSearch(val);
   };
-  render() {
-    return (
-      <div className="search-books-input-wrapper">
-        <input
-          type="text"
-          value={this.state.value}
-          placeholder="Search by title or author"
-          onChange={this.handleChange}
-          autoFocus
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="search-books-input-wrapper">
+      <input
+        type="text"
+        value={value}
+        placeholder="Search by title or author"
+        onChange={handleChange}
+        autoFocus
+      />
+    </div>
+  );
+};
 
 export default SearchBooksInput;

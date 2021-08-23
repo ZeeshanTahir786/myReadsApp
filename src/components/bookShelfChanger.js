@@ -1,29 +1,25 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class BookshelfChanger extends Component {
-  state = {
-    value: this.props.shelf,
+const BookshelfChanger = ({ shelf, book, onMove }) => {
+  const [value, setValue] = useState(shelf);
+  const handleChange = (event) => {
+    const val = event.target.value;
+    // this.setState({ value });
+    setValue(val);
+    onMove(book, val);
   };
-  handleChange = (event) => {
-    const { value } = event.target;
-    this.setState({ value });
-    this.props.onMove(this.props.book, value);
-  };
-  render() {
-    return (
-      <div className="book-shelf-changer">
-        <select value={this.state.value} onChange={this.handleChange}>
-          <option value="move" disabled>
-            Move to...
-          </option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
-          <option value="none">None</option>
-        </select>
-      </div>
-    );
-  }
-}
-
+  return (
+    <div className="book-shelf-changer">
+      <select value={value} onChange={handleChange}>
+        <option value="move" disabled>
+          Move to...
+        </option>
+        <option value="currentlyReading">Currently Reading</option>
+        <option value="wantToRead">Want to Read</option>
+        <option value="read">Read</option>
+        <option value="none">None</option>
+      </select>
+    </div>
+  );
+};
 export default BookshelfChanger;

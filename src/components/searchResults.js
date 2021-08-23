@@ -1,9 +1,7 @@
 import React from "react";
 import Book from "./books";
 
-const SearchResults = (props) => {
-  const { searchBooks, myBooks, onMove } = props;
-
+const SearchResults = ({ searchBooks, myBooks, onMove }) => {
   const updatedBooks = searchBooks.map((book) => {
     myBooks.map((b) => {
       if (b.id === book.id) {

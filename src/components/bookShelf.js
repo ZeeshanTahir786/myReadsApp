@@ -1,8 +1,7 @@
 import React from "react";
 import Book from "./books";
 
-const Bookshelf = (props) => {
-  const { shelf, books, onMove } = props;
+const Bookshelf = ({ shelf, books, onMove }) => {
   const booksOnThisShelf = books.filter((book) => book.shelf === shelf.key);
   return (
     <div className="bookshelf">
