@@ -25,7 +25,7 @@ const App = () => {
         console.log(err);
         setError(true);
       });
-  });
+  }, [searchBooks]);
   const moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf).catch((err) => {
       console.log(err);
